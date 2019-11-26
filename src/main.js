@@ -7,8 +7,8 @@ import FastClick from 'fastclick'
 // 解决移动端点击延迟200ms的问题
 if ('addEventListener' in document) {
   document.addEventListener('DOMContentLoaded', function () {
-      FastClick.attach(document.body);
-  }, false);
+    FastClick.attach(document.body)
+  }, false)
 }
 
 // 瀑布流
@@ -24,7 +24,7 @@ import '@/config/rem'
 // 全局引入 Reset-css
 import 'reset-css'
 //  全局引入 过滤器
-// import '@/config/filter'
+import '@/config/filter'
 
 new Vue({
   router,
