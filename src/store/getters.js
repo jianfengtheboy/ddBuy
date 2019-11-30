@@ -1,5 +1,5 @@
 import * as types from './mutation-type'
-// import { getLocalStore } from '@/config/global'
+import { getLocalStore, setLocalStore, removeLocalStore } from '@/config/global'
 
 export default {
   // 1. 选中商品的数量
@@ -35,7 +35,7 @@ export default {
     })
     return totalPrice
   },
-  // 性别
+  // 4.性别
   [types.USER_SEX](state) {
     if (state.userInfo.sex == '1') {
       return '美女'

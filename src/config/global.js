@@ -1,7 +1,7 @@
 export const showBackIcon = (callback) => {
   // 获取document
   let documentBody = document.documentElement || document.body
-  // let oldScrolloTop, requestFrame
+  let oldScrolloTop, requestFrame
 
   // 监听滚动
   window.addEventListener('scroll', () => {
@@ -29,19 +29,20 @@ export const showBackIcon = (callback) => {
     passive: true
   })
 
-  // const moveEnd = () => {
-  //   requestFrame = requestAnimationFrame(() => {
-  //     if (documentBody.scrollTo !== oldScrolloTop) {
-  //       oldScrolloTop = documentBody.scrollTo
-  //       // 递归调用
-  //       moveEnd()
-  //     } else {
-  //       // 直到滑动距离和原始距离一样时取消
-  //       cancelAnimationFrame(requestFrame)
-  //     }
-  //     showBackFunc()
-  //   })
-  // }
+  const moveEnd = () => {
+    // 函数节流
+    requestFrame = requestAnimationFrame(() => {
+      if (documentBody.scrollTo !== oldScrolloTop) {
+        oldScrolloTop = documentBody.scrollTo
+        // 递归调用
+        moveEnd()
+      } else {
+        // 直到滑动距离和原始距离一样时取消
+        cancelAnimationFrame(requestFrame)
+      }
+      showBackFunc()
+    })
+  }
   // 根据滚动到顶部的scrollTo距离来做处理
   const showBackFunc = () => {
     if (documentBody.scrollTop >= 200) {
@@ -95,13 +96,12 @@ export const animate = (element, target, duration = 400, mode = 'ease-out', call
 
   //获取dom样式
   const attrStyle = attr => {
-    if (attr === "opacity") {
+    if (attr === 'opacity') {
       return Math.round(getStyle(element, attr, 'float') * 100)
     } else {
       return getStyle(element, attr)
     }
   }
-
   //根字体大小，需要从此将 rem 改成 px 进行运算
   const rootSize = parseFloat(document.documentElement.style.fontSize)
   const unit = {}
@@ -109,8 +109,8 @@ export const animate = (element, target, duration = 400, mode = 'ease-out', call
 
   //获取目标属性单位和初始样式值
   Object.keys(target).forEach(attr => {
-    if (/[^\d^.]+/gi.test(target[attr])) {
-      unit[attr] = target[attr].match(/[^\d^.]+/gi)[0] || 'px'
+    if (/[^\d^\.]+/gi.test(target[attr])) { 
+      unit[attr] = target[attr].match(/[^\d^\.]+/gi)[0] || 'px'
     } else {
       unit[attr] = 'px'
     }
@@ -127,7 +127,7 @@ export const animate = (element, target, duration = 400, mode = 'ease-out', call
   })
 
   let flag = true //假设所有运动到达终点
-  // const remberSpeed = {} //记录上一个速度值,在ease-in模式下需要用到
+  const remberSpeed = {} //记录上一个速度值,在ease-in模式下需要用到
   element.timer = setInterval(() => {
     Object.keys(target).forEach(attr => {
       let iSpeed = 0 //步长
@@ -144,11 +144,11 @@ export const animate = (element, target, duration = 400, mode = 'ease-out', call
           speedBase = initState[attr]
           intervalTime = duration * 20 / 400
           break
-        // case 'ease-in':
-        //   let oldspeed = remberSpeed[attr] || 0
-        //   iSpeed = oldspeed + (target[attr] - initState[attr]) / duration
-        //   remberSpeed[attr] = iSpeed
-        //   break
+        case 'ease-in':
+          let oldspeed = remberSpeed[attr] || 0
+          iSpeed = oldspeed + (target[attr] - initState[attr]) / duration
+          remberSpeed[attr] = iSpeed
+          break
         default:
           speedBase = iCurrent
           intervalTime = duration * 5 / 400
@@ -174,8 +174,8 @@ export const animate = (element, target, duration = 400, mode = 'ease-out', call
       if (status) {
         flag = false
         //opacity 和 scrollTop 需要特殊处理
-        if (attr === "opacity") {
-          element.style.filter = "alpha(opacity:" + (iCurrent + iSpeed) + ")"
+        if (attr === 'opacity') {
+          element.style.filter = 'alpha(opacity:' + (iCurrent + iSpeed) + ')'
           element.style.opacity = (iCurrent + iSpeed) / 100
         } else if (attr === 'scrollTop') {
           element.scrollTop = iCurrent + iSpeed
@@ -217,4 +217,4 @@ export const removeLocalStore = (name) => {
 }
 
 // 版本信息
-export const _VERSION_ = "0.1.0"
+export const _VERSION_ = '0.1.0'
