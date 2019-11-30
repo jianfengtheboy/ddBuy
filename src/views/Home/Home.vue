@@ -5,7 +5,9 @@
       <div class="head">
         <Header></Header>
         <!-- 轮播图 -->
-        <Sowing :sowing_list="sowing_list" />
+        <div class="swiper-warpper">
+          <Sowing :sowing_list="sowing_list" />
+        </div>
         <!-- tip -->
         <Tip :home_ad="home_ad" />
       </div>
@@ -34,10 +36,10 @@
 
 <script type="text/javascript">
 import { getHomeData } from '@/serve/api/index.js'
-// import { showBackIcon, animate } from '@/config/global.js'
+import { showBackIcon, animate } from '@/config/global.js'
 // 引入Vuex
 import { mapMutations, mapState } from 'vuex'
-// import { ADD_TO_CART } from '@/config/pubsub_type.js'
+import { ADD_TO_CART } from '@/config/pubsub_type.js'
 // 引入页面组件
 import Header from './components/Header/Header'
 import Sowing from './components/Sowing/Sowing'
@@ -117,6 +119,9 @@ export default {
     margin-top: -3rem;
     width: 100%;
     background-image: url("http://518taole.7-orange.cn/backImage.png");
+    .swiper-warpper {
+      padding-top: 6rem;
+    }
   }
 }
 .van-divider {

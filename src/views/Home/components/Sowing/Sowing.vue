@@ -70,7 +70,6 @@ export default {
 
 <style lang="less" scoped>
 #swiper {
-  padding-top: 6rem;
   width: 95%;
   height: 10rem;
   border-radius: 1rem;
