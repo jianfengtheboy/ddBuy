@@ -50,7 +50,7 @@ export default {
     goToMyVip() {
       if (this.userInfo.token) {
         this.$router.push({
-          name: 'myVip'
+          name: 'vipTip'
         })
       } else {
         this.$router.push('/login')

@@ -1,15 +1,15 @@
 <template>
   <div id="tip">
     <div class="tipBox">
-      <img src="@/images/icon/transport.png" alt="">
+      <img src="@/images/icon/transport.png" alt="最快29分钟送达">
       <span class="tipText">最快29分钟送达</span>
     </div>
     <div class="tipBox">
-      <img src="@/images/icon/money.png" alt="">
+      <img src="@/images/icon/money.png" alt="0元起送 0配送费">
       <span class="tipText">0元起送 0配送费</span>
     </div>
     <div class="tipBox">
-      <img src="@/images/icon/seal.png" alt="">
+      <img src="@/images/icon/seal.png" alt="安心退">
       <span class="tipText">安心退</span>
     </div>
     <div @click="goToVip">

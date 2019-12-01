@@ -16,6 +16,9 @@ const Home = () => import(/* webpackChunkName: "Home" */ '@/views/Home/Home')
 // 地图
 const Map = () => import(/* webpackChunkName: "Map" */ '@/views/Home/components/Map/Map')
 
+// 注册登录
+const Login = () => import(/* webpackChunkName: "Login" */ '@/views/Login/Login.vue')
+
 Vue.use(Router)
 
 const routes = [
@@ -49,6 +52,12 @@ const routes = [
         ]
       }
     ]
+  },
+  {
+    // 登录
+    path: '/Login',
+    name: 'login',
+    component: Login
   }
 ]
 

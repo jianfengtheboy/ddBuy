@@ -133,6 +133,7 @@ export default {
   background-color: black;
   border-radius: 3.125rem;
   flex: 0, 0, 20rem;
+  cursor: pointer;
 }
 .locationWrapper .address {
   padding-left: 1.7rem;

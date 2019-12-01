@@ -1,15 +1,96 @@
 <template>
-  <div>
-    
+  <div id="wrapper">
+    <div class="titleWrapper">
+      <div class="title">限时抢购</div>
+      <van-count-down :time="time"
+                      class="countStyle"
+                      format="HH mm ss">
+        <template v-slot="timeData">
+          <span class="item">{{ formatTime(timeData.hours) }}</span>
+          <span class="item">{{ formatTime(timeData.minutes) }}</span>
+          <span class="item">{{ formatTime(timeData.seconds) }}</span>
+        </template>
+      </van-count-down>
+      <!-- 更多按钮 -->
+      <div class="more"
+           @click="moreClick">更多
+      </div>
+    </div>
+    <!-- 限时抢购商品 遍历父组件传来的数据并传递给子组件-->
+    <FlashFood :flash_sale_product_list="flash_sale_product_list" />
   </div>
 </template>
 
 <script type="text/javascript">
+import FlashFood from './FlashFood'
+import { Toast } from 'vant'
+import { formatMixin } from '@/config/mixin'
+
 export default {
-  name: ''
+  mixins: [formatMixin],
+  props: {
+    flash_sale_product_list: Array
+  },
+  data() {
+    return {
+      // 倒计时时间设置
+      time: 30 * 60 * 1000 * 100
+    }
+  },
+  components: {
+    FlashFood
+  },
+  computed: {
+    
+  },
+  methods: {
+    moreClick() {
+      Toast({
+        message: '期待更多～',
+        duration: 800
+      })
+    }
+  }
 }
 </script>
 
 <style lang="less" scoped>
-  
+#wrapper {
+  margin-top: 0.625rem;
+  margin-bottom: 0.9375rem;
+  padding-top: 1.25rem;
+  background-color: #fff;
+}
+.titleWrapper {
+  margin: 0 0.625rem 0.625rem 0.625rem;
+  height: 1.5625rem;
+}
+.title {
+  display: inline-block;
+  border-left: 4px #3cb963 solid;
+  padding-left: 0.3125rem;
+  height: 1.3125rem;
+  line-height: 1.3125rem;
+  vertical-align: middle;
+  font-size: 1.1875rem;
+  float: left;
+}
+.item {
+  display: inline-block;
+  width: 22px;
+  margin-right: 5px;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  background-color: #000;
+}
+.countStyle {
+  float: left;
+  margin-left: 0.7rem;
+}
+.more {
+  color: #3cb963;
+  float: right;
+  font-size: 0.8rem;
+}
 </style>

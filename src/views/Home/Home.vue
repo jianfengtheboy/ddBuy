@@ -28,7 +28,7 @@
     <!-- 数据加载提示gif -->
     <Loading :show="isShowLoading" />
     <!-- 回到顶部按钮 -->
-    <!-- <v-top /> -->
+    <ToTop />
     <!-- 路由出口 -->
     <router-view />
   </div>

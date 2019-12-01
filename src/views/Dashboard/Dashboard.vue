@@ -91,7 +91,7 @@ export default {
       Object.values(this.shopCart).forEach(goods => {
         num += goods.num
       })
-      return num
+      return num > 0 ? num : ''
     }
   },
   methods: {

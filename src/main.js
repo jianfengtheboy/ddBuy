@@ -3,6 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import FastClick from 'fastclick'
+import VueLazyLoad from 'vue-lazyload'
+import ToTop from '@/components/ToTop/ToTop'
 
 // 解决移动端点击延迟200ms的问题
 if ('addEventListener' in document) {
@@ -10,6 +12,15 @@ if ('addEventListener' in document) {
     FastClick.attach(document.body)
   }, false)
 }
+
+//图片懒加载
+Vue.use(VueLazyLoad, {
+  preLoad : 1,
+  loading : require('@/assets/images/default.png')
+})
+
+// 注册为全局组件
+Vue.component('ToTop', ToTop)
 
 // 瀑布流
 import waterfall from 'vue-waterfall2'
