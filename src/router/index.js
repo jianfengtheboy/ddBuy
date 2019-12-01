@@ -12,6 +12,7 @@ import Dashboard from '@/views/Dashboard/Dashboard'
 
 // 懒加载二级组件 Tarbar
 const Home = () => import(/* webpackChunkName: "Home" */ '@/views/Home/Home')
+const Category = () => import(/* webpackChunkName: "Category" */ '@/views/Category/Category')
 
 // 地图
 const Map = () => import(/* webpackChunkName: "Map" */ '@/views/Home/components/Map/Map')
@@ -50,6 +51,11 @@ const routes = [
             component: Map
           }
         ]
+      },
+      {
+        path: 'category',
+        name: 'category',
+        component: Category
       }
     ]
   },

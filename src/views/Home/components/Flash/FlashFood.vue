@@ -1,6 +1,7 @@
 <template>
   <div id="flashFood">
-    <div class="flashItemwrapper">
+    <div class="flashItemwrapper"
+          ref="flashItemwrapper">
       <ul class="itemWrapper"
           ref="ulWrapper">
         <li class="itemInCovers"
@@ -60,8 +61,8 @@
       <transition appear
                   @after-appear='afterEnter'
                   @before-appear="beforeEnter"
-                  v-for="(item, index) in showMoveDot"
-                  :key="index.id">
+                  v-for="item in showMoveDot"
+                  :key="item.id">
         <div class="move_dot"
              ref="ball"
              v-if="item">
@@ -110,7 +111,7 @@ export default {
       // 给ul设置值
       this.$refs.ulWrapper.style.width = contentWrapperWidth + 'px'
       if (!this.scroll) {
-        this.scroll = new BScroll('.flashItemwrapper', {
+        this.scroll = new BScroll(this.$refs.flashItemwrapper, {
           probeType: 2,
           startX: 0,
           click: true,
