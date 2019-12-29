@@ -1,6 +1,6 @@
 <template>
   <div class="loader-layer"
-        :class="show ? 'active' : ''">
+       :class="show ? 'active' : ''">
     <div class="spinner">
       <div class="double-bounce1"></div>
       <div class="double-bounce2">loading...</div>

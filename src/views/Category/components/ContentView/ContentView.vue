@@ -378,7 +378,7 @@ export default {
         .iconCartWrapper {
           position: absolute;
           width: 1.875rem;
-          top: 3rem;
+          bottom: 0.6rem;
           right: 0.6rem;
         }
         .icon {

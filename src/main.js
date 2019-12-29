@@ -5,6 +5,9 @@ import store from './store'
 import FastClick from 'fastclick'
 import VueLazyLoad from 'vue-lazyload'
 import ToTop from '@/components/ToTop/ToTop'
+import i18n from './i18n/index'
+import VueI18n from 'vue-i18n'
+import './icons'
 
 // 解决移动端点击延迟200ms的问题
 if ('addEventListener' in document) {
@@ -17,6 +20,11 @@ if ('addEventListener' in document) {
 Vue.use(VueLazyLoad, {
   preLoad : 1,
   loading : require('@/assets/images/default.png')
+})
+
+// 多语言
+Vue.use(VueI18n, {
+  i18n: (key, value) => i18n.t(key, value)
 })
 
 // 注册为全局组件

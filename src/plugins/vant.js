@@ -117,3 +117,7 @@ Vue.use(Sticky)
 import { Sidebar, SidebarItem } from 'vant'
 Vue.use(Sidebar)
 Vue.use(SidebarItem)
+
+// 30.商品导航
+import { GoodsAction, GoodsActionIcon, GoodsActionButton } from 'vant'
+Vue.use(GoodsAction).use(GoodsActionIcon).use(GoodsActionButton)

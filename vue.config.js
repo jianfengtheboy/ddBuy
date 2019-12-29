@@ -34,10 +34,27 @@ module.exports = {
     proxy: {
       // 配置跨域处理 可以设置多个
       '/api': {
-        target: 'https://mock.cangdu.org/mock/5d940466d360e8289c6a8eb7/api/',
+        target: 'http://api.7-orange.cn:7300/mock/5def6a2d448e330a1116366e/api/',
         ws: true,
         changeOrigin: true
       }
     }
+  },
+  chainWebpack(config) {
+    config.module
+      .rule('svg')
+      .exclude.add(resolve('src/icons'))
+      .end()
+    config.module
+      .rule('icons')
+      .test(/\.svg$/)
+      .include.add(resolve('src/icons'))
+      .end()
+      .use('svg-sprite-loader')
+      .loader('svg-sprite-loader')
+      .options({
+          symbolId: 'icon-[name]'
+      })
+      .end()
   }
 }

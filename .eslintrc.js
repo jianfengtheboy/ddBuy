@@ -24,7 +24,9 @@ module.exports = {
     // 禁止不必要的布尔转换
     'no-extra-boolean-cast': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     // 禁用未声明的变量，除非它们在 /*global */ 注释中被提到
-    'no-undef': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+    'no-undef': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    // 禁止条件表达式中出现赋值操作符
+    'no-cond-assign': process.env.NODE_ENV === 'production' ? 'error' : 'off',
   },
   parserOptions: {
     parser: 'babel-eslint'

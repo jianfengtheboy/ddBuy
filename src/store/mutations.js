@@ -1,9 +1,14 @@
 import * as types from './mutation-type'
 import Vue from 'vue'
 import { Toast } from 'vant'
-import router from '@/router'
-import { getLocalStore, setLocalStore, removeLocalStore } from '@/config/global'
-import { ADD_TO_CART } from '@/config/pubsub_type'
+import router from '@/router/index'
+// 引入本地存储
+import {
+  getLocalStore,
+  setLocalStore,
+  removeLocalStore
+} from '@/config/global'
+import { ADD_TO_CART } from "@/config/pubsub_type"
 
 export default {
   // 1.添加商品
@@ -85,7 +90,7 @@ export default {
   [types.ALL_SELECT_GOODS](state, { isCheckedAll }) {
     // 5.1 取出state中的商品数据
     let shopCart = state.shopCart
-    Object.values(shopCart).forEach((goods) => {
+    Object.values(shopCart).forEach((goods, index) => {
       if (goods.checked) { // 存在该属性
         goods.checked = !isCheckedAll
       } else {
@@ -101,7 +106,7 @@ export default {
   [types.DELETE_SELECT_GOODS](state) {
     // 6.1 取出state中的商品数据
     let shopCart = state.shopCart
-    Object.values(shopCart).forEach((goods) => {
+    Object.values(shopCart).forEach((goods, index) => {
       if (goods.checked) {
         // 6.2删除选中商品
         delete shopCart[goods.id]
@@ -130,9 +135,9 @@ export default {
   // 9.修改昵称
   [types.CHANGE_USER_NICK_NAME](state, { nickName }) {
     // 9.1 从state中取出userInfo
-    let userInfo = state.userInfo;
+    let userInfo = state.userInfo
     // 9.2 遍历userInfo的key取出User_name,替换Value值
-    Object.keys(userInfo).forEach((info) => {
+    Object.keys(userInfo).forEach((info, index) => {
       if (info == 'user_name') {
         userInfo['user_name'] = nickName
       }
@@ -147,7 +152,7 @@ export default {
     // 10.1 取出state中的用户信息
     let userInfo = state.userInfo
     // 10.2 遍历userInfo的value值
-    Object.values(userInfo).forEach((info) => {
+    Object.values(userInfo).forEach((info, index) => {
       // 10.3 判断是否有brithday
       if (info.brithday) {
         info.brithday = brithday
@@ -163,8 +168,8 @@ export default {
   // 11.用户性别
   [types.USER_INFO_SEX](state, { sex }) {
     // 11.1 取出用户信息
-    let userInfo = state.userInfo;
-    Object.values(userInfo).forEach((info) => {
+    let userInfo = state.userInfo
+    Object.values(userInfo).forEach((info, index) => {
       // 11.2 判断是否有sex
       if (info.sex) {
         info.sex = sex
@@ -177,7 +182,7 @@ export default {
     // 11.4 将数据更新到本地
     setLocalStore('userInfo', state.userInfo)
   },
-  // 12. 退出登录
+  // 15. 退出登录
   [types.LOGIN_OUT](state) {
     state.userInfo = {}
     state.shopCart = {}
@@ -185,51 +190,38 @@ export default {
     removeLocalStore('shopCart')
     removeLocalStore('shippingAddress')
   },
-  // 13.初始化获取用户收货地址
+  //  16.初始化获取用户收货地址
   [types.INIT_USER_SHOPPING_ADDRESS](state) {
     let initUsershoppingAddress = getLocalStore('shippingAddress')
-    if (initUsershoppingAddress) {
-      state.shippingAddress = JSON.parse(initUsershoppingAddress)
-    } else {
-      state.shippingAddress = []
-    }
+    state.shippingAddress = JSON.parse(initUsershoppingAddress) || []
   },
-  // 14.增加用户地址
+  // 17.增加用户地址
   [types.ADD_USER_SHOPPING_ADDRESS](state, { content }) {
-    let shippingAddress = state.shippingAddress
-    shippingAddress.push(content)
-    state.shippingAddress = [...shippingAddress]
+    // 17.1 添加用户地址
+    state.shippingAddress = [...state.shippingAddress, content]
+    // 17.2 将数据存储到本地
     setLocalStore('shippingAddress', state.shippingAddress)
   },
-  // 15.删除用户地址
+  // 18.删除用户地址
   [types.DELETE_USER_SHOPPING_ADDRESS](state, { id }) {
-    let shippingAddress = state.shippingAddress
-    for (let i = 0; i < shippingAddress.length; i++) {
-      if (shippingAddress[i].id == id) {
-        shippingAddress.splice(i, 1)
-        break
-      }
-    }
-    state.shippingAddress = [...shippingAddress]
+    // 18.1 过滤要删除的地址
+    state.shippingAddress = state.shippingAddress.filter(item => item.id !== id)
+    // 18.2 更新本地数据
     setLocalStore('shippingAddress', state.shippingAddress)
   },
-  // 16.修改用户地址信息
+  // 19.修改用户地址信息
   [types.CHANGE_USER_SHOPPING_ADDRESS](state, { content }) {
-    let shippingAddress = state.shippingAddress
-    for (let index = 0; index < shippingAddress.length; index++) {
-      if (shippingAddress[index].id == content.id) {
-        shippingAddress[index] = content
-        break
-      }
-    }
-    state.shippingAddress = [...shippingAddress]
+    // 19.1 找到要被修改地址的索引
+    const index = state.shippingAddress.findIndex(item => item.id === content.id)
+    state.shippingAddress.splice(index, 1, content)
+    // 19.2 更新本地数据
     setLocalStore('shippingAddress', state.shippingAddress)
   },
-  // 17.添加商品进购物车
+  // 添加商品进购物车
   [ADD_TO_CART](state, goods) {
     // 判断是否有用户登录
     if (state.userInfo.token) {
-      // 添加数据
+      // 1.3 添加数据
       // 延迟900毫秒等待动画结束
       setTimeout(() => {
         this.commit('ADD_GOODS', {
@@ -244,7 +236,7 @@ export default {
         })
       }, 900)
     } else {
-      // 如何没有登录跳转到登录界面
+      // 1.4 如果没有登录跳转到登录界面
       router.push('/login')
     }
   }
