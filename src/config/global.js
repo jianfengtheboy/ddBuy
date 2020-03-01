@@ -3,7 +3,7 @@
  * @LastEditors: SunJianFeng
  * @Email: jianfengtheboy@163.com
  * @Date: 2019-11-26 22:25:04
- * @LastEditTime: 2020-02-18 12:27:01
+ * @LastEditTime: 2020-03-01 14:22:56
  * @Description: 全局方法
  */
 // 本地化存储
@@ -28,4 +28,4 @@ export const removeLocalStore = (name) => {
 }
 
 // 版本信息
-export const _VERSION_ = "0.1.0"
+export const _VERSION_ = "1.0.0"
