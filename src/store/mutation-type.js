@@ -1,3 +1,11 @@
+/*
+ * @Author: SunJianFeng
+ * @LastEditors: SunJianFeng
+ * @Email: jianfengtheboy@163.com
+ * @Date: 2019-11-26 23:01:11
+ * @LastEditTime: 2020-02-18 13:49:01
+ * @Description: mutation-type
+ */
 // 1.添加商品
 export const ADD_GOODS = 'ADD_GOODS'
 // 2.购物车数据初始化

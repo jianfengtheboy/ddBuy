@@ -3,11 +3,9 @@
     <!--头部-->
     <Header></Header>
     <!--内容-->
-    <div class="listWrapper"
-         v-if="!isShowLoading">
+    <div class="listWrapper" v-if="!isShowLoading">
       <!--左边-->
-      <div class="leftWrapper"
-            ref="leftWrapper">
+      <div class="leftWrapper" ref="leftWrapper">
         <ul class="wrapper">
           <li class="categoryItem"
               v-for="(cate, index) in categoriesData"
@@ -60,11 +58,13 @@ export default {
   },
   mounted () {
     this._initData()
-    setTimeout(() => {
+  },
+  activated () {
+    this.$nextTick(() => {
       if (this.$route.params.currentIndex > -1) {
         this.clickLeftLi(this.$route.params.currentIndex + 1)
       }
-    }, 800)
+    })
   },
   methods: {
     // 初始化操作(数据和界面)
@@ -104,7 +104,7 @@ export default {
         let menuLists = this.$refs.menuList
         let el = menuLists[index]
         this.leftScroll.scrollToElement(el, 300)
-      }, 800)
+      }, 900)
       // 获取右边的数据
       let param
       if (index >= 9) {

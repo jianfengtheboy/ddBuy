@@ -1,6 +1,5 @@
 <template>
-  <div class="wrapper"
-        :style="showBgColor ? 'background-color: white;' : ''">
+  <div class="wrapper" :style="showBgColor ? 'background-color: white;' : ''">
     <div class="locationWrapper" ref="location">
       <svg viewBox="0 0 30 30"
            class="icon iconLocation">
@@ -10,17 +9,12 @@
         </path>
       </svg>
       <!-- 跳转到地图界面 -->
-      <router-link to="/dashboard/home/map"
+      <router-link to="/dashboard/map"
                    tag="span"
-                   class="address">{{location}}
+                   class="address">
+        {{location || $t('home.chooseLocation')}}
       </router-link>
-      <svg viewBox="0 0 30 30"
-           class="icon iconArrow">
-        <path fill="#FFFFFF"
-              fill-rule="evenodd"
-              d="M14.724 19.17c.783.784 2.05.788 2.837 0l5.047-5.047c1.173-1.172.776-2.123-.869-2.123H10.545c-1.652 0-2.04.952-.869 2.123l5.048 5.048z">
-        </path>
-      </svg>
+      <svg-icon iconClass="up_real" />
     </div>
     <div class="searchWrapper"
          ref="search"
@@ -35,14 +29,13 @@
             </path>
           </svg>
         </div>
-        <span class="searchPrompt">输入商品名称</span>
+        <span class="searchPrompt">{{$t('home.inputGoodsName')}}</span>
       </div>
     </div>
   </div>
 </template>
 
 <script type="text/javascript">
-import { Toast } from 'vant'
 import PubSub from 'pubsub-js'
 import { LOCATION_ADDRESS } from '@/config/pubsub_type'
 import { getLocalStore } from '@/config/global'
@@ -51,7 +44,7 @@ export default {
   data() {
     return {
       showBgColor: false,
-      location: getLocalStore('userLocation') || '请选择位置..'
+      location: getLocalStore('userLocation')
     }
   },
   mounted () {
@@ -71,7 +64,7 @@ export default {
       let that = this
       //垂直滚动的值兼容问题
       let scrollTopE = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-      // let screenHeight = window.screen.availHeight
+      let screenHeight = window.screen.availHeight
       if (scrollTopE > 168) {
         // 添加搜索栏颜色
         that.showBgColor = true
@@ -81,8 +74,8 @@ export default {
     },
     // 到搜索界面
     goSearch () {
-      Toast({
-        message: '暂未实现哦~',
+      this.$toast({
+        message: this.$t('common.unrealized'),
         duration: 800
       })
     }
@@ -133,7 +126,6 @@ export default {
   background-color: black;
   border-radius: 3.125rem;
   flex: 0, 0, 20rem;
-  cursor: pointer;
 }
 .locationWrapper .address {
   padding-left: 1.7rem;

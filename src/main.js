@@ -1,3 +1,11 @@
+/*
+ * @Author: SunJianFeng
+ * @LastEditors: SunJianFeng
+ * @Email: jianfengtheboy@163.com
+ * @Date: 2019-11-25 23:06:42
+ * @LastEditTime : 2020-01-07 10:21:19
+ * @Description: main.js
+ */
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
@@ -7,6 +15,8 @@ import VueLazyLoad from 'vue-lazyload'
 import ToTop from '@/components/ToTop/ToTop'
 import i18n from './i18n/index'
 import VueI18n from 'vue-i18n'
+import LangENUS from './i18n/en'
+import LangZHCN from './i18n/zh'
 import './icons'
 
 // 解决移动端点击延迟200ms的问题
@@ -48,5 +58,6 @@ import '@/config/filter'
 new Vue({
   router,
   store,
+  i18n,
   render: h => h(App)
 }).$mount('#app')

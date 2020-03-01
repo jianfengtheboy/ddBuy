@@ -1,13 +1,10 @@
 import * as types from './mutation-type'
 import Vue from 'vue'
+import Cookies from 'js-cookie'
 import { Toast } from 'vant'
 import router from '@/router/index'
 // 引入本地存储
-import {
-  getLocalStore,
-  setLocalStore,
-  removeLocalStore
-} from '@/config/global'
+import { getLocalStore, setLocalStore, removeLocalStore } from '@/config/global'
 import { ADD_TO_CART } from "@/config/pubsub_type"
 
 export default {
@@ -239,5 +236,10 @@ export default {
       // 1.4 如果没有登录跳转到登录界面
       router.push('/login')
     }
+  },
+  // 切换语言
+  SET_LANGUAGE: (state, language) => {
+    state.language = language
+    Cookies.set('language', language)
   }
 }

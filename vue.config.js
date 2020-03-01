@@ -1,4 +1,13 @@
+/*
+ * @Author: SunJianFeng
+ * @LastEditors: SunJianFeng
+ * @Email: jianfengtheboy@163.com
+ * @Date: 2019-12-30 00:11:17
+ * @LastEditTime: 2020-02-27 12:00:41
+ * @Description: 配置文件
+ */
 const path = require('path')
+
 function resolve (dir) {
   return path.join(__dirname, dir)
 }
@@ -10,7 +19,7 @@ module.exports = {
   indexPath: 'index.html',
   filenameHashing: true,
   lintOnSave: process.env.NODE_ENV !== 'production',
-  runtimeCompiler: false,
+  runtimeCompiler: true,
   transpileDependencies: [],
   productionSourceMap: false,
   integrity: false,

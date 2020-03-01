@@ -23,7 +23,7 @@
       <TabbarGoodsItem :tabbar_all_product_list="tabbar_all_product_list"
                        :flash_sale_product_list="flash_sale_product_list" />
       <!-- 最底部 -->
-      <van-divider>我是有底线的</van-divider>
+      <van-divider>{{$t('home.bottomTip')}}</van-divider>
     </div>
     <!-- 数据加载提示gif -->
     <Loading :show="isShowLoading" />
@@ -36,7 +36,6 @@
 
 <script type="text/javascript">
 import { getHomeData } from '@/serve/api/index.js'
-import { showBackIcon, animate } from '@/config/global.js'
 // 引入Vuex
 import { mapMutations, mapState } from 'vuex'
 import { ADD_TO_CART } from '@/config/pubsub_type.js'
@@ -80,7 +79,7 @@ export default {
     TabbarGoodsItem,
     Loading,
   },
-  mounted() {
+  created() {
     this._initData()
   },
   computed: {
@@ -89,23 +88,24 @@ export default {
   methods: {
     ...mapMutations(['ADD_GOODS', 'ADD_TO_CART']),
     // 数据初始化
-    _initData () {
-      getHomeData().then(response => {
-        if (response.success) {
-          // 给轮播组件 sowing_list赋值
-          this.sowing_list = response.data.list[0].icon_list
-          this.nav_list = response.data.list[2].icon_list
-          this.flash_sale_product_list = response.data.list[3].product_list
-          this.tabbar_all_product_list = response.data.list[12].product_list
-          this.isShowLoading = false
-          // 给特色专区赋值
-          this.specialZone = response.data.special_zone
-          // 获取首页广告图
-          this.home_ad = response.data.home_ad.image_url
-        }
-      }).catch(error => {
-        console.log(error)
-      })
+    async _initData() {
+      const response = await getHomeData()
+      if (response.success) {
+        const data = response.data
+        // 给轮播组件 sowing_list赋值
+        this.sowing_list = data.list[0].icon_list
+        // navList 赋值
+        this.nav_list = data.list[2].icon_list
+        // 给限时抢购赋值
+        this.flash_sale_product_list = data.list[3].product_list
+        // 给Tabbar 商品列表赋值
+        this.tabbar_all_product_list = data.list[12].product_list
+        this.isShowLoading = false
+        // 给特色专区赋值
+        this.specialZone = data.special_zone
+        // 获取首页广告图
+        this.home_ad = data.home_ad.image_url
+      }
     }
   }
 }

@@ -1,53 +1,75 @@
 export default {
   // 公共的key
   common: {
-      unrealized: '暂未实现',
-      all: '全部'
+    unrealized: '暂未实现',
+    all: '全部',
+    distributionTip: '0元起送 0配送费',
+    easeBack: '安心退',
+    addCarSuccess: '成功加入购物车',
+    deleteConfirm: '确定要删除选中商品吗?'
+  },
+  //商品详情
+  goodsDetail: {
+    goodsDetail: '商品详情',
+    shopping: '抢购中',
+    end: '距结束',
+    sold: '已售',
+    goodsTips: '此商品按500g/份计价,如实收少于500g将退还差价',
+    quickTime: '最快29分钟内送达',
+    specifications: '规格',
+    preservationConditions: '保存条件',
+    coldStorage: '冷藏',
+    shelfLife: '保质期',
+    day: '15天',
+    addToCar: '加入购物车'
   },
   //购物车
   car: {
-      title: '购物车',
-      delete: '删除',
-      tip: '购物车空空滴~',
-      walk: '去逛逛',
-      all: '全选',
-      guess: '猜你喜欢'
+    title: '购物车',
+    delete: '删除',
+    tip: '购物车空空滴~',
+    walk: '去逛逛',
+    all: '全选',
+    guess: '猜你喜欢'
   },
   // 首页
   home: {
-      chooseLocation: '请选择位置..',
-      more: '更多',
-      home: '首页',
-      category: '分类',
-      eat: '吃什么',
-      cart: '购物车',
-      mine: '我的',
-      inputGoodsName: '输入商品名称',
-      vipDesc: '加入会员·每年预计节省806元',
-      vipSubDesc: '5折开卡>',
-      specialZone: '特色专区',
-      foodie: '吃货节',
-      dinner: '晚餐',
-      popularity: '人气',
-      goodChoose: '心选',
-      limitBuy: '限时抢购',
-      bottom_tip: '我是有底线的'
+    chooseLocation: '请选择位置..',
+    more: '更多',
+    home: '首页',
+    category: '分类',
+    eat: '吃什么',
+    cart: '购物车',
+    mine: '我的',
+    inputGoodsName: '输入商品名称',
+    vipDesc: '加入会员·每年预计节省806元',
+    vipSubDesc: '5折开卡>',
+    specialZone: '特色专区',
+    foodie: '吃货节',
+    dinner: '晚餐',
+    popularity: '人气',
+    goodChoose: '心选',
+    limitBuy: '限时抢购',
+    bottomTip: '我是有底线的',
+    chooseAddress: '请选择地址',
+    currentLocation: '您当前的位置',
+    nearbyAddress: '附近的地址',
   },
   // 分类
   category: {
-      tip: '输入商品名称',
-      bottom_tip: '到底了,看看别的分类吧'
+    tip: '输入商品名称',
+    bottomTip: '到底了,看看别的分类吧'
   },
   // 吃什么
   eat: {
-      all: '全部',
-      close: '收起',
-      pleaseHolder: '搜索菜谱、食材',
-      menu: '今日菜单',
-      menuDevide: '菜单分类',
-      recent: '最近找过',
-      tip_bottom: "到底了,别拉了!",
-      tip: "收藏暂未实现哦~"
+    all: '全部',
+    close: '收起',
+    pleaseHolder: '搜索菜谱、食材',
+    menu: '今日菜单',
+    menuDevide: '菜单分类',
+    recent: '最近找过',
+    tip_bottom: "到底了,别拉了!",
+    tip: "收藏暂未实现哦~"
   },
   // 我的
   mine: {
@@ -60,16 +82,20 @@ export default {
     myLocation: '我的收货地址',
     myCar: '我的绿卡',
     servier: '联系客服',
+    servierTime: '客服时间 07:00-22:00',
     feedback: '意见反馈',
+    switchLanguage: '语言',
+    chinese: '中文',
+    english: '英文',
     version: '当前版本',
     waitingPay: '待支付',
     waitingReceive: "待收货",
     waitingComment: '待评价',
     waitingFeedback: "售后/退款",
-    tip: '退款页面尚未开通啦!',
+    unrealized: '退款页面尚未开通啦!',
     tip2: '记得点个小星❤️哦~',
     tip3: '💘感谢您的关注💘',
-    tip4: "GitHub上搜索 \njianfengtheboy/ddBuy\n🦉欢迎提出优化建议🙉",
+    tip4: "GitHub上搜索 \njianfengtheboy/ddBuy \n🦉欢迎提出优化建议🙉",
     feedbackTip: '暂时还没有相关订单',
     cardPrise: '绿卡价格',
     moreMessage: '更多特权敬请期待...',
@@ -78,6 +104,7 @@ export default {
     cardTip1: '专享券',
     cardTip2: '专享特价',
     cardTip3: '2倍积分',
+    cardTip4: '更多特权',
     vipType: '5折',
     vipTime: '年卡·365天',
     vipRecommend: '相当于约0.24元/天',
@@ -94,7 +121,7 @@ export default {
     huabeiPay: "花呗支付",
     payImmeatally: '立即支付',
     cardUeless: '绿卡未开通',
-    tipSpecial: '只能到这步啦!后面的臣妾做不到啊~~',
+    tip: '只能到这步啦!后面的臣妾做不到啊~~',
     changeNickName: '修改昵称',
     confirm: '保存',
     nickName: "请输入新昵称",
@@ -107,6 +134,7 @@ export default {
     rmb: '元',
     myOrders: '我的订单',
     itemsTitle: ['全部', '待支付', '待收货', '待评价'],
+
     personalInfo: '个人资料',
     head: "头像",
     user_name: "昵称",
@@ -123,6 +151,7 @@ export default {
     day: '日',
     man: "帅哥",
     woman: '美女',
+
     greenCard: '绿卡',
     greenCardPower: '绿卡特权',
     fiftypecert: '5折开通绿卡',
@@ -145,7 +174,7 @@ export default {
     yearCard: '年卡',
     openCards: '开通绿卡',
     onece: '1倍',
-    twice: '2倍'
+    twice: '2倍',
   },
   // 订单
   order: {
@@ -163,12 +192,16 @@ export default {
     mark: '备注',
     tip: '选填,可以告诉我们您的特殊需求',
     goodsList: '商品清单',
+
     totalMoney: '商品金额',
+
     sendMoney: '配送费',
     point: '积分',
     order19: '实付',
+
     pay: '实付',
     sendForm: '提交订单',
+
     selectArrivalTime: '选择送达时间',
     comfirm: '确定',
     goods: '商品',
@@ -177,10 +210,16 @@ export default {
     sigalPrice: '单价:',
     numbers: '数量:',
     addTip: '还没有添加过地址呢,添加一个吧😄',
+
     addLocation: '添加地址',
     comfirmAndUse: '保存并使用',
     editLocation: '编辑地址',
-    myAddress: '我的地址'
+    myAddress: '我的地址',
+    settlement: '结算',
+    chooseGoods: '请选择需要结算的商品',
+    deliveryTime: '请选择送达时间',
+    today: '今天',
+    tomorrow: '明天'
   },
   // 登录
   login: {
@@ -206,9 +245,9 @@ export default {
     sendVerify: '发送验证码',
     hasSend: '已发送',
     phoneVerify: '账号密码登录',
-    message: '短信验证码登录',
+    smsMessage: '短信验证码登录',
     switchLoginMsg: '账号密码登录',
-    messageTip: '验证码获取成功,请在输入框输入:',
+    message: '验证码获取成功,请在输入框输入',
     pleaseInputCorrectPhoneNumber: '请输入正确的手机号',
     pleaseInputCorrectVerifyumber: '请输入正确的验证码',
     otherWechat: '微信登录-暂未完成',

@@ -1,3 +1,11 @@
+<!--
+ * @Author: SunJianFeng
+ * @LastEditors: SunJianFeng
+ * @Email: jianfengtheboy@163.com
+ * @Date: 2019-12-01 18:35:31
+ * @LastEditTime: 2020-02-23 12:35:27
+ * @Description: 下拉框组件
+ -->
 <template>
   <div id="dropMenu"
         v-if="menuDown"
@@ -5,7 +13,7 @@
         ref="dropMenuWrapp"
         @click="touchClick">
     <div class="itemWraper">
-      <ul v-for="(item,index) in categoriesDetailData"
+      <ul v-for="(item, index) in categoriesDetailData"
           :key="item.id">
         <li class="titleItem"
             @click="itemClick(index)"

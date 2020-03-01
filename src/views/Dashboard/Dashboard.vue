@@ -6,16 +6,16 @@
                 active-color="#75a342">
       <van-tabbar-item v-for="(item, index) in tabbars"
                        :key="index"
-                       :id="index== 3 ? 'buycar' : ''"
+                       :id="index == 3 ? 'buycar' : ''"
                        @click="tab(index, item.name)"
                        :info="item.name == 'cart' ? goodsNum : ''">
-        <span :class="currIndex == index ? active:''">{{item.title}}</span>
+        <span :class="currIndex == index ? active : ''">{{$t(item.title)}}</span>
         <template slot="icon" slot-scope="props">
           <img :src="props.active ? item.active : item.normal">
         </template>
       </van-tabbar-item>
     </van-tabbar>
-    <!-- 是否缓存界面选择加载 -->
+    <!-- 缓存界面选择加载 -->
     <keep-alive>
       <router-view v-if="$route.meta.keepAlive" />
     </keep-alive>
@@ -24,7 +24,6 @@
 </template>
 
 <script type="text/javascript">
-import { setLocalStore } from '@/config/global.js'
 import { mapState, mapMutations, mapActions } from 'vuex'
 
 export default {
@@ -36,32 +35,32 @@ export default {
       tabbars: [
         {
           name: 'home',
-          title: '首页',
+          title: 'home.home',
           normal: require('@/images/tabbar/home_default.png'),
           active: require('@/images/tabbar/home_selected.png')
         },
         {
           name: 'category',
-          title: "分类",
+          title: 'home.category',
           normal: require('@/images/tabbar/category_default.png'),
           active: require('@/images/tabbar/category_selected.png')
         },
         {
           name: 'eat',
-          title: '吃什么',
+          title: 'home.eat',
           normal: require('@/images/tabbar/eat_default.png'),
           active: require('@/images/tabbar/eat_selected.png')
         },
         {
           name: 'cart',
-          title: '购物车',
+          title: 'home.cart',
           normal: require('@/images/tabbar/shoppingcart_default.png'),
           active: require('@/images/tabbar/shoppingcart_selected.png'),
           num: 5
         },
         {
           name: 'mine',
-          title: '我的',
+          title: 'home.mine',
           normal: require('@/images/tabbar/mine_default.png'),
           active: require('@/images/tabbar/mine_selected.png')
         }
@@ -78,7 +77,7 @@ export default {
   watch: {
     // 监听路由变化,保证路由跳转Tabbar选中正常
     $route: {
-      handler(val) {
+      handler (val, oldval) {
         this.tabbarSelected(val.name)
       }
     },
@@ -96,13 +95,10 @@ export default {
   },
   methods: {
     ...mapMutations(['INIT_SHOP_CART', 'INIT_USER_INFO']),
-    ...mapActions(['autoLogin']),
     // 点击tabbar触发的方法
     tab(index, val) {
       this.currIndex = index
       this.$router.push(val)
-      // 将索引保存到本地
-      setLocalStore('tatbarActive', index)
     },
     // 初始化购物车数据
     _initData() {
@@ -110,25 +106,14 @@ export default {
       this.INIT_USER_INFO()
     },
     tabbarSelected (item) {
-      switch (item) {
-        case 'home':
-          this.active = 0
-          break
-        case 'category':
-          this.active = 1
-          break
-        case 'eat':
-          this.active = 2
-          break
-        case 'cart':
-          this.active = 3
-          break
-        case 'mine':
-          this.active = 4
-          break
-        default:
-          break
+      const mapType = {
+        home: 0,
+        category: 1,
+        eat: 2,
+        cart: 3,
+        mine: 4
       }
+      this.active = mapType[item]
     }
   }
 }

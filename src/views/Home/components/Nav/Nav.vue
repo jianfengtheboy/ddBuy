@@ -1,3 +1,11 @@
+<!--
+ * @Author: SunJianFeng
+ * @LastEditors: SunJianFeng
+ * @Email: jianfengtheboy@163.com
+ * @Date: 2019-11-30 00:23:33
+ * @LastEditTime: 2020-02-23 00:01:22
+ * @Description: nav组件
+ -->
 <template>
   <div id="wrapper">
     <van-grid :column-num="5"

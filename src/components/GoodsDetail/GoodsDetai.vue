@@ -1,6 +1,6 @@
 <template>
   <div id="goodsDetail">
-    <van-nav-bar title="商品详情"
+    <van-nav-bar :title="$t('goodsDetail.goodsDetail')"
                  :fixed=true
                  left-arrow
                  @click-left="onClickLeft">
@@ -8,17 +8,17 @@
     <div class="goodsDetailWrapper">
       <!-- 商品图 -->
       <div class="goodsImage">
-        <img :src="goodsInfo.small_image">
+        <img :src="goodsInfo.small_image" alt="">
       </div>
       <!-- 限时抢购  -->
       <div class="flash"
            v-show="goodsInfo.isFlash">
         <div class="flashLeft">
-          <span>限时抢购</span>
-          <i>抢购中</i>
+          <span>{{$t('home.limitBuy')}}</span>
+          <i>{{$t('goodsDetail.shopping')}}</i>
         </div>
         <div class="flashRight">
-          <span>距结束</span>
+          <span>{{$t('goodsDetail.end')}}</span>
           <!-- 倒计时 -->
           <van-count-down :time="time"
                           class="countStyle"
@@ -39,32 +39,32 @@
         <div class="subTitle">{{goodsInfo.spec}}</div>
         <span class="originPrice">{{goodsInfo.origin_price | moneyFormat}}</span>
         <span class="price">{{goodsInfo.price}}</span>
-        <span class="totalSales">已售:{{goodsInfo.total_sales}}</span>
+        <span class="totalSales">{{$t('goodsDetail.sold')}}:{{goodsInfo.total_sales}}</span>
         <van-divider />
         <div class="shippingInfo">
-          <van-icon name="cluster-o" />此商品按500g/份计价,如实收少于500g将退还差价</div>
+          <van-icon name="cluster-o" />{{$t('goodsDetail.goodsTips')}}</div>
         <van-divider />
         <div class="shippingInfo">
-          <van-icon name="clock-o" />最快29分钟内送达</div>
+          <van-icon name="clock-o" />{{$t('goodsDetail.quickTime')}}</div>
       </div>
       <!-- 规格 -->
       <div class="specifications">
-        <div class="specificationsTitle">规格 </div>
+        <div class="specificationsTitle">{{$t('goodsDetail.specifications')}} </div>
         <van-divider dashed />
         <div class="conditions">
-          <span>保存条件</span>
-          <span class="conditionsOne">冷藏</span>
+          <span>{{$t('goodsDetail.preservationConditions')}}</span>
+          <span class="conditionsOne">{{$t('goodsDetail.coldStorage')}}</span>
         </div>
         <van-divider dashed />
         <div class="conditions">
-          <span>保质期</span>
-          <span class="conditionsTwo">15天</span>
+          <span>{{$t('goodsDetail.shelfLife')}}</span>
+          <span class="conditionsTwo">{{$t('goodsDetail.day')}}</span>
         </div>
         <van-divider dashed />
       </div>
       <div class="showGoods">
-        <img :src="goodsInfo.small_image">
-        <img :src="goodsImage">
+        <img :src="goodsInfo.small_image" alt="">
+        <img :src="goodsImage" alt="">
       </div>
       <!-- 底部商品导航    -->
       <van-goods-action :safe-area-inset-bottom=true
@@ -73,7 +73,7 @@
                                :info="goodsNum"
                                @click="onClickCar" />
         <van-goods-action-button type="warning"
-                                 text="加入购物车"
+                                 :text="$t('goodsDetail.addToCar')"
                                  @click="onClickAddToCar" />
       </van-goods-action>
     </div>
@@ -106,12 +106,10 @@ export default {
       return num > 0 ? num : ''
     }
   },
-  components: {
-  },
   methods: {
     ...mapMutations(['ADD_TO_CART']),
     // 返回
-    onClickLeft () {
+    onClickLeft() {
       this.$router.go(-1)
     },
     // 加入购物车
@@ -119,7 +117,7 @@ export default {
       this.ADD_TO_CART(this.goodsInfo)
     },
     // 点击了购物车
-    onClickCar () {
+    onClickCar() {
       this.$router.push({ name: 'cart' })
     }
   }
@@ -216,6 +214,11 @@ export default {
         font-size: 0.6rem;
         height: 0.8rem;
         color: grey;
+        .van-icon {
+          vertical-align: top;
+          margin-top: 0.01rem;
+          margin-right: 0.1rem;
+        }
       }
     }
     .specifications {

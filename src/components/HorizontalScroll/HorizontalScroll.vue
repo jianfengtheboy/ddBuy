@@ -32,7 +32,9 @@ export default {
   },
   data () {
     return {
-      currentSubTitle: 0
+      currentSubTitle: 0,
+      isShowDropMenu: true,
+      menuDown: true
     }
   },
   methods: {

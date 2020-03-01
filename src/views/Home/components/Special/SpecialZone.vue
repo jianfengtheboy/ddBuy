@@ -1,7 +1,7 @@
 <template>
   <div id="specialZone">
     <div class="titleWrapper">
-      <div class="title">特色专区</div>
+      <div class="title">{{$t('home.specialZone')}}</div>
     </div>
     <div class="wrapperItem">
       <!-- 新品尝鲜 -->
@@ -44,8 +44,7 @@
         <p class="otherTitle">{{otherItem.title}}</p>
         <p class="otherSubTitle">{{otherItem.subtitle}}</p>
         <img class="otherImage"
-             src="../../../../images/special/peanut.jpeg"
-             alt="">
+             src="../../../../images/special/peanut.jpeg">
       </div>
       <!-- 平价菜场 -->
       <div class="lowPrice"

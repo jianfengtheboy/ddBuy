@@ -1,3 +1,11 @@
+<!--
+ * @Author: SunJianFeng
+ * @LastEditors: SunJianFeng
+ * @Email: jianfengtheboy@163.com
+ * @Date: 2019-11-30 00:19:19
+ * @LastEditTime: 2020-02-18 17:36:44
+ * @Description: 轮播图
+ -->
 <template>
   <swiper id="swiper"
           :options="swiperOption"
@@ -49,8 +57,7 @@ export default {
         // 滑动后回调函数
         on: {
           slideChangeTransitionEnd () {
-          },
-          // preventLinksPropagation: false
+          }
         }
       }
     }

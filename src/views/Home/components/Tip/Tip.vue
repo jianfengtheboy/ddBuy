@@ -1,16 +1,16 @@
 <template>
   <div id="tip">
     <div class="tipBox">
-      <img src="@/images/icon/transport.png" alt="最快29分钟送达">
-      <span class="tipText">最快29分钟送达</span>
+      <img src="@/images/icon/transport.png" alt="">
+      <span class="tipText">{{$t('goodsDetail.quickTime')}}</span>
     </div>
     <div class="tipBox">
-      <img src="@/images/icon/money.png" alt="0元起送 0配送费">
-      <span class="tipText">0元起送 0配送费</span>
+      <img src="@/images/icon/money.png" alt="">
+      <span class="tipText">{{$t('common.distributionTip')}}</span>
     </div>
     <div class="tipBox">
-      <img src="@/images/icon/seal.png" alt="安心退">
-      <span class="tipText">安心退</span>
+      <img src="@/images/icon/seal.png" alt="">
+      <span class="tipText">{{$t('common.easeBack')}}</span>
     </div>
     <div @click="goToVip">
       <img class="adImg" :src="home_ad">
@@ -78,7 +78,7 @@ export default {
   height: 2.5rem;
   line-height: 1.2rem;
   border-radius: 50%;
-  font-size: 0.1rem;
+  font-size: 0.65rem;
   text-align: center;
   color: gold;
   background-image: linear-gradient(to right, #ff9569 0%, #e92758 100%);

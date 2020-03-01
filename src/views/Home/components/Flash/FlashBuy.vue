@@ -1,7 +1,15 @@
+<!--
+ * @Author: SunJianFeng
+ * @LastEditors: SunJianFeng
+ * @Email: jianfengtheboy@163.com
+ * @Date: 2019-11-30 00:29:04
+ * @LastEditTime: 2020-02-18 16:24:40
+ * @Description: FlashBuy
+ -->
 <template>
   <div id="wrapper">
     <div class="titleWrapper">
-      <div class="title">限时抢购</div>
+      <div class="title">{{$t('home.limitBuy')}}</div>
       <van-count-down :time="time"
                       class="countStyle"
                       format="HH mm ss">
@@ -13,7 +21,8 @@
       </van-count-down>
       <!-- 更多按钮 -->
       <div class="more"
-           @click="moreClick">更多
+           @click="moreClick">
+        {{ $t('home.more') }}
       </div>
     </div>
     <!-- 限时抢购商品 遍历父组件传来的数据并传递给子组件-->
@@ -40,13 +49,10 @@ export default {
   components: {
     FlashFood
   },
-  computed: {
-    
-  },
   methods: {
     moreClick() {
       Toast({
-        message: '期待更多～',
+        message: this.$t('home.more'),
         duration: 800
       })
     }
@@ -57,9 +63,8 @@ export default {
 <style lang="less" scoped>
 #wrapper {
   margin-top: 0.625rem;
-  margin-bottom: 0.9375rem;
-  padding-top: 1.25rem;
-  background-color: #fff;
+  padding: 1.25rem 0 0.9375rem 0;
+  background-color: white;
 }
 .titleWrapper {
   margin: 0 0.625rem 0.625rem 0.625rem;

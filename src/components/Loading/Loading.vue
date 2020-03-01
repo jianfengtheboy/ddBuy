@@ -1,9 +1,17 @@
+<!--
+ * @Author: SunJianFeng
+ * @LastEditors: SunJianFeng
+ * @Email: jianfengtheboy@163.com
+ * @Date: 2019-11-30 00:38:58
+ * @LastEditTime: 2020-02-23 10:55:25
+ * @Description: Loading组件
+ -->
 <template>
   <div class="loading_container">
     <div class="load_img"
-         :style="{ backgroundPositionY : -(positionY % 7) * 2.5 + 'rem'}">
+         :style="{ backgroundPositionY : -(positionY % 7) * 2.5 + 'rem' }">
     </div>
-    <svg-icon iconClass="loading" style="width:1.5rem;height:1.5rem" />
+    <svg-icon iconClass="loading" style="width:3rem;height:1.5rem" />
   </div>
 </template>
 

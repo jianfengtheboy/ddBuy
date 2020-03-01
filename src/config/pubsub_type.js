@@ -1,3 +1,11 @@
+/*
+ * @Author: SunJianFeng
+ * @LastEditors: SunJianFeng
+ * @Email: jianfengtheboy@163.com
+ * @Date: 2019-11-26 22:37:35
+ * @LastEditTime: 2020-02-18 12:27:58
+ * @Description: 全局types
+ */
 // 1.定义存储分类界面通知的事件名
 export const CATEGORY_ITEM_CLICK = 'CATEGORY_ITEM'
 

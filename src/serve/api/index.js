@@ -1,3 +1,11 @@
+/*
+ * @Author: SunJianFeng
+ * @LastEditors: SunJianFeng
+ * @Email: jianfengtheboy@163.com
+ * @Date: 2019-11-26 22:42:35
+ * @LastEditTime: 2020-02-27 13:37:55
+ * @Description: 接口请求
+ */
 import ajax from './ajax'
 
 // 1. 定义基础路径

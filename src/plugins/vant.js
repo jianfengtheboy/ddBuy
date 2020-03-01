@@ -121,3 +121,7 @@ Vue.use(SidebarItem)
 // 30.商品导航
 import { GoodsAction, GoodsActionIcon, GoodsActionButton } from 'vant'
 Vue.use(GoodsAction).use(GoodsActionIcon).use(GoodsActionButton)
+
+// 31 遮罩
+import { Overlay } from 'vant'
+Vue.use(Overlay)

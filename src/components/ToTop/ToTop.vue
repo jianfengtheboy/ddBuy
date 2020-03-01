@@ -1,9 +1,17 @@
+<!--
+ * @Author: SunJianFeng
+ * @LastEditors: SunJianFeng
+ * @Email: jianfengtheboy@163.com
+ * @Date: 2019-12-01 13:59:46
+ * @LastEditTime: 2020-02-17 11:08:54
+ * @Description: toTop组件
+ -->
 <template>
   <div class="scrollTop"
         v-show="showTop"
         @click="toTop">
     <svg-icon iconClass="backtotop"
-              style="width:2.5rem;height:2.5rem"/>
+              class="backtotop" />
   </div>
 </template>
 
@@ -59,6 +67,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.backtotop {
+  width: 2.5rem;
+  height: 2.5rem;
+}
 .scrollTop {
   right: 0;
   position: fixed;

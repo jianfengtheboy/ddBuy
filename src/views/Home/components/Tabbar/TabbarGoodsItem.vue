@@ -1,3 +1,11 @@
+<!--
+ * @Author: SunJianFeng
+ * @LastEditors: SunJianFeng
+ * @Email: jianfengtheboy@163.com
+ * @Date: 2019-11-30 00:35:23
+ * @LastEditTime: 2020-02-18 17:52:18
+ * @Description: 
+ -->
 <template>
   <div id="tabbarItem">
     <van-tabs v-model="active"
@@ -14,28 +22,28 @@
       <!-- 全部 -->
       <van-tab>
         <div slot="title">
-          <span>{{itemsTitle[0]}}</span>
+          <span>{{$t(itemsTitle[0])}}</span>
         </div>
         <ProduceItem :product_lists="tabbar_all_product_list" />
       </van-tab>
       <!-- 晚餐 -->
       <van-tab>
         <div slot="title">
-          <span>{{itemsTitle[1]}}</span>
+          <span>{{$t(itemsTitle[1])}}</span>
         </div>
         <ProduceItem :product_lists="flash_sale_product_list" />
       </van-tab>
       <!-- 人气 -->
       <van-tab>
         <div slot="title">
-          <span>{{itemsTitle[2]}}</span>
+          <span>{{$t(itemsTitle[2])}}</span>
         </div>
         <ProduceItem :product_lists="tabbar_all_product_list" />
       </van-tab>
       <!-- 心选 -->
       <van-tab>
         <div slot="title">
-          <span>{{itemsTitle[3]}}</span>
+          <span>{{$t(itemsTitle[3])}}</span>
         </div>
         <ProduceItem :product_lists="flash_sale_product_list" />
       </van-tab>
@@ -54,7 +62,7 @@ export default {
   data() {
     return {
       active: 0,
-      itemsTitle: ['全部', '晚餐', '人气', '心选']
+      itemsTitle: ['common.all', 'home.dinner', 'home.popularity', 'home.goodChoose'],
     }
   },
   components: {

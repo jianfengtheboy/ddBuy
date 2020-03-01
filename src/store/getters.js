@@ -1,3 +1,11 @@
+/*
+ * @Author: SunJianFeng
+ * @LastEditors: SunJianFeng
+ * @Email: jianfengtheboy@163.com
+ * @Date: 2019-11-26 22:58:49
+ * @LastEditTime: 2020-02-18 12:56:12
+ * @Description: getters
+ */
 import * as types from './mutation-type'
 import { getLocalStore, setLocalStore, removeLocalStore } from '@/config/global'
 
@@ -6,7 +14,7 @@ export default {
   [types.SELECTED_GOODS_COUNT](state) {
     let count = 0
     let shopCart = state.shopCart
-    Object.values(shopCart).forEach((goods) => {
+    Object.values(shopCart).forEach((goods, index) => {
       if (goods.checked) {
         count++
       }
@@ -18,7 +26,7 @@ export default {
     let goodsArray = []
     let shopCart = state.shopCart
     // let shopCart = JSON.parse(getLocalStore('shopCart'))
-    Object.values(shopCart).forEach((good) => {
+    Object.values(shopCart).forEach((good, index) => {
       if (good.checked) {
         goodsArray.push(shopCart[good.id])
       }
@@ -28,7 +36,7 @@ export default {
   // 3.选中商品的价格
   [types.SELECTED_GOODS_PRICE](state) {
     let totalPrice = 0
-    Object.values(state.shopCart).forEach((goods) => {
+    Object.values(state.shopCart).forEach((goods, index) => {
       if (goods.checked) {
         totalPrice += (goods.price * goods.num * 100)
       }

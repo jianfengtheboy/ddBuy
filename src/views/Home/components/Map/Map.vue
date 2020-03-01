@@ -1,9 +1,8 @@
 <template>
   <div id="map">
-    <van-nav-bar title="请选择收货地址"
+    <van-nav-bar :title="$t('home.chooseAddress')"
                  :border=false
-                 :fixed="
-                 true"
+                 :fixed="true"
                  @click-left="onClickLeft"
                  left-arrow
                  style="height:2.5rem" />
@@ -30,9 +29,8 @@
       </div>
       <!-- 地址列表 -->
       <div class="adrs">
-        <ul class="addrs-list"
-            v-if="list.length > 0">
-          <van-cell-group title="您当前的位置">
+        <ul class="addrs-list" v-if="list.length > 0">
+          <van-cell-group :title="$t('home.currentLocation')">
             <van-cell>
               <template slot="title">
                 <span class="custom-title">
@@ -43,10 +41,10 @@
             </van-cell>
           </van-cell-group>
           <!-- 附近位置 -->
-          <van-cell-group title="附近的地址">
+          <van-cell-group :title="$t('home.nearbyAddress')">
             <ul>
               <li class="nearLists"
-                  v-for="(item,index) in list"
+                  v-for="(item, index) in list"
                   :key="index"
                   @click="clickAddredd(item)">
                 <p class="title">{{item.name}}</p>
@@ -173,9 +171,7 @@ export default {
     }
   },
   methods: {
-    getCenter() {
-
-    },
+    getCenter() {},
     // 获取位置列表
     getList: function (result) {
       //获取列表
