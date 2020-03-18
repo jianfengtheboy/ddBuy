@@ -3,7 +3,7 @@
  * @LastEditors: SunJianFeng
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-02-23 12:49:33
- * @LastEditTime: 2020-02-23 16:31:56
+ * @LastEditTime: 2020-03-18 23:27:33
  * @Description: 今日菜单组件
  -->
 <template>
@@ -16,7 +16,7 @@
                 v-for="(item, index) in todayMenuCategoryLists"
                 :key="item.id"
                 ref="menuTitle"
-                :class="{selected : currentSubTitle === index}"
+                :class="{ selected : currentSubTitle === index }"
                 @click="menuItemClick(index)">
               {{item.name}}
             </li>
@@ -32,11 +32,12 @@
         </div>
       </div>
       <MenuCategoryLists :todayMenuCategoryLists="todayMenuCategoryLists"
-                         :isShowMenuList="isShowMenuList"
-                         v-on:hiddenMenu="clickAll">
+                          :isShowMenuList="isShowMenuList"
+                          v-on:hiddenMenu="clickAll">
       </MenuCategoryLists>
     </div>
-    <Loading :show="isShowLoading"></Loading>
+    <!-- 骨架屏 -->
+    <Skeleton v-if="isShowLoading"></Skeleton>
   </div>
 </template>
 
@@ -45,8 +46,8 @@ import BScroll from 'better-scroll'
 import MenuCategoryLists from '../MenuCategoryLists/MenuCategoryLists'
 import PubSub from 'pubsub-js'
 import { EAT_MENUTITLE_CLICK } from '@/config/pubsub_type.js'
-import Loading from '@/components/Loading/LoadingGif'
 import { getTodayMenuCategoryList } from '@/serve/api/index.js'
+import Skeleton from '../../Skeleton'
 
 export default {
   data () {
@@ -62,13 +63,13 @@ export default {
   mounted () {
     let that = this
     this._initData()
-    PubSub.subscribe(EAT_MENUTITLE_CLICK, function (msg, index) {
+    PubSub.subscribe(EAT_MENUTITLE_CLICK, function(msg, index) {
       that.menuItemClick(index)
     })
   },
   components: {
     MenuCategoryLists,
-    Loading
+    Skeleton
   },
   watch: {
     menuDown () {

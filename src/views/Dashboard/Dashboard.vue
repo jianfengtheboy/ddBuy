@@ -1,17 +1,17 @@
 <template>
   <div id="dashboard">
     <van-tabbar v-model="active"
-                :safe-area-inset-bottom=true
+                :safe-area-inset-bottom="true"
                 class="active_tab"
                 active-color="#75a342">
       <van-tabbar-item v-for="(item, index) in tabbars"
-                       :key="index"
-                       :id="index == 3 ? 'buycar' : ''"
-                       @click="tab(index, item.name)"
-                       :info="item.name == 'cart' ? goodsNum : ''">
+                        :key="index"
+                        :id="index == 3 ? 'buycar' : ''"
+                        @click="tab(index, item.name)"
+                        :info="item.name == 'cart' ? goodsNum : ''">
         <span :class="currIndex == index ? active : ''">{{$t(item.title)}}</span>
         <template slot="icon" slot-scope="props">
-          <img :src="props.active ? item.active : item.normal">
+          <img :src="props.active ? item.active : item.normal" />
         </template>
       </van-tabbar-item>
     </van-tabbar>
@@ -24,6 +24,7 @@
 </template>
 
 <script type="text/javascript">
+import { setLocalStore, getLocalStore } from '@/config/global.js'
 import { mapState, mapMutations, mapActions } from 'vuex'
 
 export default {

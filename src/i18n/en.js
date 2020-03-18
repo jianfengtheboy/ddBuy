@@ -1,3 +1,11 @@
+/*
+ * @Author: SunJianFeng
+ * @LastEditors: SunJianFeng
+ * @Email: jianfengtheboy@163.com
+ * @Date: 2019-12-30 00:17:33
+ * @LastEditTime: 2020-03-18 22:32:21
+ * @Description: 英文
+ */
 export default {
   // 公共的key
   common: {
@@ -58,18 +66,18 @@ export default {
   // 分类
   category: {
     tip: 'Enter product name',
-    bottomTip: 'Anyway, let\'s look at the other categories'
+    bottomTip: "Anyway, let's look at the other categories"
   },
   // 吃什么
   eat: {
     all: 'All',
     close: 'Close',
     pleaseHolder: 'Search for recipes and ingredients',
-    menu: 'Today\'s Menu',
+    menu: "Today's Menu",
     menuDevide: 'Menu items',
     recent: 'Recently looked for',
-    tip_bottom: "The end! Stop it!",
-    tip: "Collection is not yet realized oh"
+    tip_bottom: 'The end! Stop it!',
+    tip: 'Collection is not yet realized oh'
   },
   // 我的
   mine: {
@@ -77,7 +85,7 @@ export default {
     phone: 'Tel',
     login: 'Login',
     myOrder: 'My order',
-    allOrder: "View all orders",
+    allOrder: 'View all orders',
     myBill: 'My coupon',
     myLocation: 'My shipping address',
     myCar: 'My green card',
@@ -89,13 +97,13 @@ export default {
     english: 'English',
     version: 'Version ',
     waitingPay: 'To be paid',
-    waitingReceive: "For the goods",
+    waitingReceive: 'For the goods',
     waitingComment: 'To evaluate',
-    waitingFeedback: "After sale",
+    waitingFeedback: 'After sale',
     unrealized: 'The refund page is not open yet!',
     tip2: 'Remember to point a little star ❤ ️ oh ~',
     tip3: '💘Thank you for your attention💘',
-    tip4: "GitHub \njianfengtheboy/ddBuy \n🦉Suggestions for optimization are welcome🙉",
+    tip4: 'GitHub \njianfengtheboy/ddBuy\n🦉Suggestions for optimization are welcome🙉',
     feedbackTip: 'There is no relevant order at present',
     cardPrise: 'Green card price',
     moreMessage: 'Stay tuned for more privileges...',
@@ -109,26 +117,26 @@ export default {
     vipTime: 'Years, 365 days',
     vipRecommend: '¥0.24/day',
     prise1: '¥88',
-    prise2: "¥188",
+    prise2: '¥188',
     vipType1: '7% off',
     vipTime1: 'Season, 90 days',
     vipRecommend1: '¥0.33/day',
     prise11: '¥30',
-    prise12: "¥45",
+    prise12: '¥45',
     payMethod: 'Method of payment',
     wechatPay: 'WeChat pay',
     aliPay: 'Alipay pay',
-    huabeiPay: "Spend bai pay",
+    huabeiPay: 'Spend bai pay',
     payImmeatally: 'Immediate payment',
     cardUeless: 'Green card not open',
-    tip: 'That\'s it! The courtiers at the back couldn\'t do it',
+    tip: "That's it! The courtiers at the back couldn't do it",
     changeNickName: 'Modify the nickname',
     confirm: 'Save',
-    nickName: "Please enter a new nickname",
+    nickName: 'Please enter a new nickname',
     personal: 'Personal data modified successfully!',
     message: 'Please enter a nickname',
-    myBills: "My coupon",
-    persent: "Please enter 520it",
+    myBills: 'My coupon',
+    persent: 'Please enter 520it',
     bill: 'coupons',
     condition: 'No threshold \nDiscount ¥1.5',
     rmb: 'RMB',
@@ -136,11 +144,11 @@ export default {
     itemsTitle: ['All', 'Pay', 'Receiving', 'Appraise'],
 
     personalInfo: 'Personal Data',
-    head: "Head Portrait",
-    user_name: "Nickname",
-    userSex: "Sex",
-    Brithday: "Brithday",
-    phoneNumber: "Tel",
+    head: 'Head Portrait',
+    user_name: 'Nickname',
+    userSex: 'Sex',
+    Brithday: 'Brithday',
+    phoneNumber: 'Tel',
     noInput: 'Not Filled',
     logout: 'Log out',
     infoTip: 'Personal data modified successfully',
@@ -149,7 +157,7 @@ export default {
     year: 'year',
     month: 'month',
     day: 'day',
-    man: "male",
+    man: 'male',
     woman: 'female',
 
     greenCard: 'Green Card',
@@ -161,7 +169,7 @@ export default {
     to: 'full',
     toUse: 'use',
     immeatallyGet: 'Immediately to receive',
-    weekBill: 'This week\'s coupon',
+    weekBill: "This week's coupon",
     cardTip7: 'Immediately to receive',
     billTip: 'Green card coupon every day to get preferential treatment',
     currentGoods: 'Shopping',
@@ -174,7 +182,7 @@ export default {
     yearCard: 'Annual Card',
     openCards: 'Open',
     onece: 'one',
-    twice: 'two',
+    twice: 'two'
   },
   // 订单
   order: {
@@ -209,7 +217,7 @@ export default {
     things: 'a',
     sigalPrice: 'The unit price:',
     numbers: 'number:',
-    addTip: 'I haven\'t added an address yet, let\'s add one😄',
+    addTip: "I haven't added an address yet, let's add one😄",
 
     addLocation: 'Add the address',
     comfirmAndUse: 'Save and use',
@@ -251,6 +259,6 @@ export default {
     pleaseInputCorrectPhoneNumber: 'Please enter the correct phone number',
     pleaseInputCorrectVerifyumber: 'Please enter the correct verification code',
     otherWechat: 'WeChat login - not complete yet',
-    otherQQ: "QQ login - not completed yet"
+    otherQQ: 'QQ login - not completed yet'
   }
 }

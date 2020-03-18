@@ -73,9 +73,6 @@ import DropMenu from '../DropMenu/DropMenu'
 import { mapMutations, mapState } from 'vuex'
 
 export default {
-  props: {
-    categoriesDetailData: Array
-  },
   data () {
     return {
       scrollY: 0,
@@ -86,6 +83,9 @@ export default {
       menuDown: true,
       isShowDropMenu: false
     }
+  },
+  props: {
+    categoriesDetailData: Array
   },
   components: {
     DropMenu

@@ -9,7 +9,7 @@
         <ul class="wrapper">
           <li class="categoryItem"
               v-for="(cate, index) in categoriesData"
-              :class="{selected: currentIndex === index}"
+              :class="{selected : currentIndex === index}"
               @click="clickLeftLi(index)"
               :key="cate.id"
               ref="menuList">
@@ -20,8 +20,8 @@
       <!--右边-->
       <ContentView :categoriesDetailData="categoriesDetailData" />
     </div>
-    <!-- 加载动画 -->
-    <Loading :show="isShowLoading" />
+    <!-- 骨架屏 -->
+    <Skeleton v-if="isShowLoading" />
     <!-- 点击左边按钮加载数据时候显示动画 -->
     <LoadingGif v-show="isShowLoadingGif" />
   </div>
@@ -30,18 +30,18 @@
 <script type="text/javascript">
 import Header from './components/SearchHead/SearchHead'
 import ContentView from './components/ContentView/ContentView'
-import Loading from '@/components/Loading/LoadingGif'
 import LoadingGif from '@/components/Loading/Loading'
 import { getCategoryData, getCategoryDetailData } from '@/serve/api/index'
 import BScroll from 'better-scroll'
+import Skeleton from './Skeleton'
 
 export default {
   name: 'Category',
   components: {
     Header,
     ContentView,
-    Loading,
-    LoadingGif
+    LoadingGif,
+    Skeleton
   },
   data () {
     return {

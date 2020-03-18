@@ -11,8 +11,7 @@
       <!-- 跳转到地图界面 -->
       <router-link to="/dashboard/map"
                    tag="span"
-                   class="address">
-        {{location || $t('home.chooseLocation')}}
+                   class="address">{{location || $t('home.chooseLocation')}}
       </router-link>
       <svg-icon iconClass="up_real" />
     </div>

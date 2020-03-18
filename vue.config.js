@@ -3,7 +3,7 @@
  * @LastEditors: SunJianFeng
  * @Email: jianfengtheboy@163.com
  * @Date: 2019-12-30 00:11:17
- * @LastEditTime: 2020-02-27 12:00:41
+ * @LastEditTime: 2020-03-18 22:16:19
  * @Description: 配置文件
  */
 const path = require('path')
@@ -65,5 +65,14 @@ module.exports = {
           symbolId: 'icon-[name]'
       })
       .end()
+
+    if (process.env.NODE_ENV === 'production') {
+      if (process.env.npm_config_report) {
+        config
+          .plugin('webpack-bundle-analyzer')
+          .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin)
+          .end()
+      }
+    }
   }
 }

@@ -1,5 +1,7 @@
 <template>
   <div id="home">
+    <!-- 骨架屏幕  数据未加载时显示占位-->
+    <Skeleton v-show="isShowLoading" />
     <div v-if="!isShowLoading">
       <!-- 头部地理位置和搜索框 -->
       <div class="head">
@@ -21,16 +23,12 @@
       <SpecialZone :specialZone="specialZone" />
       <!--TabbarItem 商品 -->
       <TabbarGoodsItem :tabbar_all_product_list="tabbar_all_product_list"
-                       :flash_sale_product_list="flash_sale_product_list" />
+                        :flash_sale_product_list="flash_sale_product_list" />
       <!-- 最底部 -->
       <van-divider>{{$t('home.bottomTip')}}</van-divider>
     </div>
-    <!-- 数据加载提示gif -->
-    <Loading :show="isShowLoading" />
     <!-- 回到顶部按钮 -->
     <ToTop />
-    <!-- 路由出口 -->
-    <router-view />
   </div>
 </template>
 
@@ -48,7 +46,7 @@ import VipTip from './components/VipTip/VipTip'
 import FlashBuy from './components/Flash/FlashBuy'
 import SpecialZone from './components/Special/SpecialZone'
 import TabbarGoodsItem from './components/Tabbar/TabbarGoodsItem'
-import Loading from '@/components/Loading/LoadingGif'
+import Skeleton from './components/skeleton'
 
 export default {
   name: 'home',
@@ -77,7 +75,7 @@ export default {
     FlashBuy,
     SpecialZone,
     TabbarGoodsItem,
-    Loading,
+    Skeleton,
   },
   created() {
     this._initData()
