@@ -3,7 +3,7 @@
  * @LastEditors: SunJianFeng
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-02-18 14:58:04
- * @LastEditTime: 2020-02-23 23:07:10
+ * @LastEditTime: 2020-06-22 23:24:31
  * @Description: 购物车🛒
  -->
 <template>
@@ -12,36 +12,37 @@
     <header class="titleWrapper">
       <h4><strong>{{$t('car.title')}}</strong></h4>
       <div class="clearCart"
-           :style="selectedGoodsCount == 0 ? 'color:grey' : 'color:#45c763'"
-           @click="clearCart"
-           v-show="isShowEmptyCart">
-        {{$t('car.delete')}}
+          :style="selectedGoodsCount == 0 ? 'color:grey' : 'color:#45c763'"
+          @click="clearCart"
+          v-show="isShowEmptyCart"
+      >{{$t('car.delete')}}
       </div>
     </header>
-    <!-- 购物车区域 -->
+    <!-- 购物车没有商品 -->
     <div class="cartWrapper">
       <!-- 购物车为空 -->
       <div class="emptyCart" v-show="!isShowEmptyCart">
-        <img src="./../../images/cart/empty.png">
+        <img src="./../../images/cart/empty.png" alt="">
         <div class="title">{{$t('car.tip')}}</div>
         <router-link to="/dashboard/home" class="goHome">{{$t('car.walk')}}</router-link>
       </div>
       <!-- 购物车有数据 -->
       <div class="contentWrapper" v-show="isShowEmptyCart">
-        <div class="contentWrapperList"
-             v-for="goods in shopCart"
-             :key="goods.id">
+        <div
+          class="contentWrapperList"
+          v-for="(goods, index) in shopCart"
+          :key="index"
+        >
           <section>
             <div class="shopCartListCon">
               <div class="left">
-                <a href="javaScript:void(0);"
+                <a href="javaScript:;"
                    class="cartCheckBox"
                    :checked="goods.checked"
-                   @click.stop="single(goods.id)">
-                </a>
+                   @click.stop="single(goods.id)"></a>
               </div>
               <div class="center">
-                <img :src="goods.smallImage">
+                <img :src="goods.smallImage" alt="">
               </div>
               <div class="right">
                 <a>{{goods.name}}</a>
@@ -87,7 +88,6 @@ import ProduceItem from '@/views/Home/components/Tabbar/ProduceItem'
 import Loading from '@/components/Loading/LoadingGif'
 import { getGuessYouLike } from '@/serve/api/index.js'
 import { mapMutations, mapState, mapGetters } from 'vuex'
-import { getLocalStore } from '@/config/global'
 import { Dialog, Toast } from 'vant'
 
 export default {
@@ -178,7 +178,7 @@ export default {
         }).catch(() => {})
       }
     },
-    // 初始化数据
+    // 数据加载
     async _initData() {
       let ref = await getGuessYouLike()
       if (ref.success) {
@@ -227,7 +227,7 @@ export default {
 }
 </script>
 
-<style lang="less" scopes>
+<style lang="less" scoped>
 .cart {
   width: 100%;
   height: 100%;
@@ -260,20 +260,17 @@ export default {
     margin-top: 2.6rem;
     @media screen and (min-width: 300px) and(max-width: 374px) {
       .van-submit-bar {
-        // bottom: 3.3rem;
-        bottom: 49px;
+        bottom: 3.3rem;
       }
     }
     @media screen and (min-width: 375px) and(max-width: 420px) {
       .van-submit-bar {
-        // bottom: 2.55rem;
-        bottom: 49px;
+        bottom: 2.7rem;
       }
     }
     @media screen and (min-width: 420px) and(max-width: 1024px) {
       .van-submit-bar {
-        // bottom: 1.4rem;
-        bottom: 49px;
+        bottom: 1.4rem;
       }
     }
     .emptyCart {

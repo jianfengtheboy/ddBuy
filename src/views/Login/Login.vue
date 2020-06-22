@@ -3,12 +3,11 @@
     <div class="loginBox" @click="changeImage(3)">
       <div class="auth-form">
         <div class="panfish">
-          <img :src="imageURL">
+          <img :src="imageURL" alt="">
         </div>
         <!-- 关闭按钮 -->
         <van-icon name="close" class="closeButton" @click="close" />
         <van-tabs v-model="active" animated>
-          <!-- 登录 -->
           <van-tab :title="$t('login.title')">
             <!-- 账号密码登录 -->
             <van-cell-group v-show="!isShowSMSLogin">
@@ -39,8 +38,8 @@
                      ref="imgCaptcha"
                      slot="button">
               </van-field>
+              <!-- 手机号快捷登录 -->
             </van-cell-group>
-            <!-- 手机快捷登录 -->
             <van-cell-group v-show="isShowSMSLogin">
               <van-field v-model="login_phone"
                          required
@@ -115,11 +114,11 @@
         <van-grid :column-num="2"
                   :border=false>
           <van-grid-item @click="thirdLogin(0)">
-            <svg-icon class="otherLoginMethods" iconClass="wechat" />
+            <svg-icon iconClass="wechat" />
             <div class="title">{{$t('login.wechat')}}</div>
           </van-grid-item>
           <van-grid-item @click="thirdLogin(1)">
-            <svg-icon class="otherLoginMethods" iconClass="QQ" />
+            <svg-icon iconClass="QQ" />
             <div class="title">{{$t('login.qqchant')}}</div>
           </van-grid-item>
         </van-grid>
@@ -140,11 +139,11 @@
 
 <script type="text/javascript">
 import { Toast, Dialog } from 'vant'
-import { getPhoneCaptcha, phoneCaptchaLogin, pwdLogin } from '@/serve/api/index.js'
-import { mapState, mapActions, mapMutations } from 'vuex'
+import { getPhoneCaptcha, phoneCaptchaLogin } from '@/serve/api/index.js'
+import { mapActions } from 'vuex'
 
 export default {
-  data() {
+  data () {
     return {
       imageURL: require('./../../images/login/normal.png'),
       // 倒计时
@@ -184,11 +183,12 @@ export default {
     },
     // 发送验证码按钮显示
     captchaDisable() {
-      if (this.login_phone.length > 10 && this.phoneNumberRight) {
-        return false
-      } else {
-        return true
-      }
+      return this.login_phone.length > 10 && this.phoneNumberRight
+      // if (this.login_phone.length > 10 && this.phoneNumberRight) {
+      //   return false;
+      // } else {
+      //   return true;
+      // }
     }
   },
   methods: {
@@ -244,13 +244,12 @@ export default {
           return
         } else if (this.smsCaptcha < 7 || this.smsCaptcha != Number(this.smsCaptchaResult)) {
           Toast({
-            message: this.$t('login.pleaseInputCorrectVerifyNumber'),
+            message: this.$t('login.pleaseInputCorrectVerifyumber'),
             duration: 800
           })
           return
         }
         let ref = await phoneCaptchaLogin(this.login_phone, this.smsCaptcha)
-        // 设置userInfo 保存到vuex和本地
         this.syncuserInfo(ref.data)
         this.$router.back()
       } else {

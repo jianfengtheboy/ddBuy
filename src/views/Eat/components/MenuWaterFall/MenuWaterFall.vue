@@ -3,7 +3,7 @@
  * @LastEditors: SunJianFeng
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-02-23 12:48:35
- * @LastEditTime: 2020-02-23 16:36:43
+ * @LastEditTime: 2020-06-22 23:52:49
  * @Description: 瀑布流组件
  -->
 <template>
@@ -14,11 +14,11 @@
       <div class="cell-item"
            v-for="item in data"
            :key="item.id">
-        <img v-lazy="item.image">
+        <img v-lazy="item.image" alt="">
         <div class="item-body">
           <div class="item-desc">{{item.name}}</div>
           <div class="item-footer">
-            <img class="avatar" v-lazy="item.author_avatar">
+            <img class="avatar" v-lazy="item.author_avatar" alt="">
             <div class="name">{{item.author_name}}</div>
           </div>
         </div>
@@ -45,7 +45,6 @@ export default {
   },
   methods: {
     async _initData() {
-      // 第一条数据
       let ref = await getTodayMenuDetail('/lk01')
       if (ref.success) {
         this.menulistDetail = ref.data.big_recommend.list

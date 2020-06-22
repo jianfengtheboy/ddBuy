@@ -23,9 +23,9 @@
       <SpecialZone :specialZone="specialZone" />
       <!--TabbarItem 商品 -->
       <TabbarGoodsItem :tabbar_all_product_list="tabbar_all_product_list"
-                        :flash_sale_product_list="flash_sale_product_list" />
+                       :flash_sale_product_list="flash_sale_product_list" />
       <!-- 最底部 -->
-      <van-divider>{{$t('home.bottomTip')}}</van-divider>
+      <van-divider>{{ $t('home.bottomTip') }}</van-divider>
     </div>
     <!-- 回到顶部按钮 -->
     <ToTop />
@@ -36,7 +36,6 @@
 import { getHomeData } from '@/serve/api/index.js'
 // 引入Vuex
 import { mapMutations, mapState } from 'vuex'
-import { ADD_TO_CART } from '@/config/pubsub_type.js'
 // 引入页面组件
 import Header from './components/Header/Header'
 import Sowing from './components/Sowing/Sowing'
@@ -49,7 +48,6 @@ import TabbarGoodsItem from './components/Tabbar/TabbarGoodsItem'
 import Skeleton from './components/skeleton'
 
 export default {
-  name: 'home',
   data() {
     return {
       // 是否加载动画
@@ -75,9 +73,9 @@ export default {
     FlashBuy,
     SpecialZone,
     TabbarGoodsItem,
-    Skeleton,
+    Skeleton
   },
-  created() {
+  mounted() {
     this._initData()
   },
   computed: {

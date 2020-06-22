@@ -94,7 +94,7 @@ export default {
 }
 .wrapperItem .newItem {
   float: left;
-  width: 49.9%;
+  width: 49.8%;
   height: 5rem;
   border-right: 0.01rem solid #dddbc0;
   border-bottom: 0.01rem solid #dddbc0;

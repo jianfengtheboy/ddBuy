@@ -3,24 +3,28 @@
  * @LastEditors: SunJianFeng
  * @Email: jianfengtheboy@163.com
  * @Date: 2019-12-01 13:59:46
- * @LastEditTime: 2020-02-17 11:08:54
+ * @LastEditTime: 2020-06-22 22:52:25
  * @Description: toTop组件
  -->
 <template>
-  <div class="scrollTop"
-        v-show="showTop"
-        @click="toTop">
-    <svg-icon iconClass="backtotop"
-              class="backtotop" />
-  </div>
+  <transition name="moveR">
+    <div class="scrollTop"
+         v-show="showTop"
+         @click="toTop">
+      <svg-icon iconClass="backtotop"
+                class="backtotop" />
+    </div>
+  </transition>
 </template>
 
-<script type="text/javascript">
-import SvgIcon from '@/components/SvgIcon/index'
+<script>
+import SvgIcon from "../SvgIcon/index"
 
 export default {
+  components: {
+    SvgIcon
+  },
   name: 'scroll-top',
-  components: { SvgIcon },
   data () {
     return {
       scrollTop: 0,
@@ -36,37 +40,46 @@ export default {
     }
   },
   mounted () {
-    window.addEventListener('scroll', this.getScrollTop)
+    // 监听scroll事件
+    window.addEventListener('scroll', this.throttler(this.getScrollTop, 300))
   },
   methods: {
-    toTop(e) {
-      if (!!this.scrollState) return
-      this.scrollState = 1
-      e.preventDefault()
-      let distance = document.documentElement.scrollTop || document.body.scrollTop
-      let that = this
-      this.time = setInterval(() => {
-        that.gotoTop(that.scrollTop - that.dParams)
-      }, 10)
-    },
-    gotoTop(distance) {
-      this.dParams += 20
-      distance = distance > 0 ? distance : 0
-      document.documentElement.scrollTop = document.body.scrollTop = window.pageYOffset = distance
-      if (this.scrollTop < 10) {
-        clearInterval(this.time)
-        this.dParams = 20
-        this.scrollState = 0
-      }
+    // 回到顶部
+    toTop () {
+      var timer = setInterval(function () {
+        let osTop = document.documentElement.scrollTop || document.body.scrollTop
+        let ispeed = Math.floor(-osTop / 5)
+        document.documentElement.scrollTop = document.body.scrollTop = osTop + ispeed
+        this.isTop = true
+        if (osTop === 0) {
+          clearInterval(timer)
+        }
+      }, 30)
     },
     getScrollTop () {
       this.scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-    }
-  }
+    },
+    // 创建一个节流函数用来减少getScrollTop方法的执行 
+    // 固定时间为300ms
+    throttler (fn, time) {
+      let timeOut = null
+      // 创建闭包
+      return function () {
+        clearTimeout(timeOut);
+        timeOut = setTimeout(() => {
+          fn.apply(this, arguments)
+        }, time)
+      }
+    },
+    destroyed () {
+      //移除scroll事件监听
+      window.removeEventListener('scroll', this.getScrollTop)
+    },
+  },
 }
 </script>
 
-<style lang="less" scoped>
+<style scoped>
 .backtotop {
   width: 2.5rem;
   height: 2.5rem;
@@ -77,5 +90,17 @@ export default {
   bottom: 5rem;
   cursor: pointer;
   z-index: 100;
+}
+.moveR-enter-active,
+.moveR-leave-active {
+  transition: all 0.2s linear;
+  transform: translateX(0);
+}
+.moveR-enter,
+.moveR-leave {
+  transform: translateX(100%);
+}
+.moveR-leave-to {
+  transform: translateX(100%);
 }
 </style>

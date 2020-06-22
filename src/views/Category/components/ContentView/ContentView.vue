@@ -14,9 +14,7 @@
       </ul>
     </div>
     <!-- 下拉菜单 -->
-    <div class="showMenu"
-          @click="menuClick"
-          v-show="isShowDropMenu">
+    <div class="showMenu" @click="menuClick" v-show="isShowDropMenu">
       <span class="downMenu" v-if="menuDown">
         <svg-icon iconClass="down" style="width:1.5rem;height:1.5rem" />
       </span>
@@ -37,7 +35,9 @@
         <div v-for="(it, index) in categoriesDetailData"
              :key="index"
              ref="good">
-          <p class="productCategoryTitle">{{it.name}}</p>
+          <p class="productCategoryTitle">
+            {{it.name}}
+          </p>
           <ul>
             <li v-for="(item,index) in it.products"
                 :key="index"
@@ -45,7 +45,7 @@
                 @click.stop="goToGoodsDetail(item)">
               <div class="list_item flex">
                 <p>
-                  <img v-lazy="item.small_image">
+                  <img v-lazy="item.small_image" alt="">
                 </p>
                 <div>
                   <p class="name">{{item.product_name}}</p>
@@ -68,7 +68,6 @@
 
 <script type="text/javascript">
 import BScroll from 'better-scroll'
-import { Toast } from 'vant'
 import DropMenu from '../DropMenu/DropMenu'
 import { mapMutations, mapState } from 'vuex'
 
@@ -117,7 +116,7 @@ export default {
     ...mapMutations({
       addToCart: 'ADD_TO_CART'
     }),
-    // titleScroll 滚动初始化
+    // 滚动初始化
     _initTitleScroll() {
       let contentWrapperWidth = 120
       let el = this.$refs.subTitle
@@ -272,6 +271,10 @@ export default {
       width: 4.0625rem;
       height: 4.0625rem;
       border-radius: 0.04rem;
+      display: block;
+      // 等比缩小图片来适应元素的尺寸
+      background-size: contain;
+      background-image: url("../../../../images/placeholderImg/product-img-load.png");
     }
     .list_item {
       justify-content: flex-start;

@@ -3,14 +3,14 @@
  * @LastEditors: SunJianFeng
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-02-23 12:49:33
- * @LastEditTime: 2020-03-18 23:27:33
+ * @LastEditTime: 2020-06-23 00:01:22
  * @Description: 今日菜单组件
  -->
 <template>
   <div>
     <div id="todayMenu" v-if="!isShowLoading">
       <div class="todayMenuWrapper">
-        <div class="menuList" ref="menuList">
+        <div class="menuList">
           <ul ref="menuUlContent">
             <li class="menuItem"
                 v-for="(item, index) in todayMenuCategoryLists"
@@ -18,11 +18,12 @@
                 ref="menuTitle"
                 :class="{ selected : currentSubTitle === index }"
                 @click="menuItemClick(index)">
-              {{item.name}}
+              {{ item.name }}
             </li>
           </ul>
         </div>
-        <div class="menuAll" @click="clickAll">{{msg}}
+        <div class="menuAll" @click="clickAll">
+          {{ msg }}
           <span class="downMenu" v-if="menuDown">
             <svg-icon iconClass="down" style="width:1rem;height:1rem" />
           </span>
@@ -114,7 +115,7 @@ export default {
             probeType: 3,
             startX: 0,
             click: true,
-            scrollX: true,
+            scrollX: true
           })
         } else {
           this.menuTitleScroll.refresh()

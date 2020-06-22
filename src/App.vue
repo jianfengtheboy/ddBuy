@@ -3,7 +3,7 @@
  * @LastEditors: SunJianFeng
  * @Email: jianfengtheboy@163.com
  * @Date: 2019-11-25 23:06:42
- * @LastEditTime : 2020-01-07 10:23:45
+ * @LastEditTime: 2020-06-22 22:39:42
  * @Description: App.vue
  -->
 <template>
@@ -30,5 +30,11 @@ window.onload = function() {
 #app {
   width: 100%;
   height: 100%;
+}
+/** 解决 [Intervention] Unable to preventDefault 
+inside passive event listener due to target being treated as
+**/
+* {
+  touch-action: pan-y;
 }
 </style>

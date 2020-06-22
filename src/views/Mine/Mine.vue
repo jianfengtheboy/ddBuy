@@ -3,7 +3,7 @@
  * @LastEditors: SunJianFeng
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-02-18 15:00:05
- * @LastEditTime: 2020-02-29 11:45:50
+ * @LastEditTime: 2020-06-23 00:37:59
  * @Description: 我的
  -->
 <template>
@@ -22,9 +22,9 @@
           <div class="personMsg"
                v-if="userInfo.token"
                @click="goToPage('userCenter')">
-            <img class="iconImage" :src="user_image.login_icon">
+            <img class="iconImage" :src="user_image.login_icon" alt="">
             <div class="sex" v-if="userInfo.sex">
-              <img :src="userInfo.sex == '1' ? user_image.female : user_image.male">
+              <img :src="userInfo.sex == '1' ? user_image.female : user_image.male" alt="">
             </div>
             <div class="personInfo" v-if="userInfo.token">
               <span>{{userInfo.user_name}}</span>
@@ -33,7 +33,7 @@
           </div>
           <!-- 未登录状态 -->
           <div class="personMsg" v-if="!userInfo.token">
-            <img class="iconImage" :src="user_image.noLogin_icon">
+            <img class="iconImage" :src="user_image.noLogin_icon" alt="">
             <div class="personInfo" v-if="!userInfo.token">
               <div @click="goToPage('login')">{{$t('mine.login')}}</div>
             </div>
@@ -75,9 +75,7 @@
                 @click="goToPage('myVip')">
         <template slot="title">
           <span class="custom-title">{{$t('mine.myCar')}}</span>
-          <van-tag type="danger"
-                   :round=true>New
-          </van-tag>
+          <van-tag type="danger" :round=true>NEW</van-tag>
         </template>
       </van-cell>
     </van-cell-group>
@@ -146,7 +144,7 @@ export default {
     // 跳转到我的订单
     goTomyOrder (index) {
       if (index !== 3) {
-        return this.$router.push({ name: 'myOrder', params: { active: index + 1 } })
+        return this.$router.push({ name: "myOrder", params: { active: index + 1 } })
       }
       Toast({
         message: this.$t('mine.unrealized'),
@@ -162,9 +160,7 @@ export default {
         confirmButtonText: this.$t('mine.tip2'),
         title: this.$t('mine.tip3'),
         message: this.$t('mine.tip4')
-      }).then(() => {
-        // on close
-      })
+      }).then(() => {})
     },
     // 切换语言
     onSwitchLanguage () {
